@@ -27,7 +27,7 @@ export default class Products extends Component {
                         <li key={product._id}>
                             <div className="product">
                                 <a href={"#" + product._id} onClick={()=> this.openModal(product)}>
-                                    <img src={product.image} title={product.title} />
+                                    <img src={product.image} alt={product.title} />
                                     {product.title}
                                 </a>
                                 <div className="product-price">
