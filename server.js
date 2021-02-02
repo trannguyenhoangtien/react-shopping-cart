@@ -6,8 +6,8 @@ const shortid = require("shortid");
 const app = express();
 app.use(bodyParser.json());
 
-app.use("/", express.static(__dirname + "/build"));
-app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
+// app.use("/", express.static(__dirname + "/build"));
+// app.get("/", (req, res) => res.sendFile(__dirname + "/build/index.html"));
 
 mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
   useNewUrlParser: true,
@@ -73,6 +73,14 @@ app.post("/api/orders", async(req, res) =>{
     const order = await Order(req.body).save();
     res.send(order);
 })
+
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static(path.join(__dirname, "build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log("server at http://localhost:5000"));
