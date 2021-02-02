@@ -6,7 +6,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://localhost:5000',
+      target: 'https://ht-react-shopping-cart.herokuapp.com:5000',
       changeOrigin: true,
     })
   );
