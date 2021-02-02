@@ -1,5 +1,10 @@
 {
   "name": "react-shopping-cart",
+  "proxy": {
+    "*": "http://[::1]:5000"
+    // "secure": false,
+    // "changeOrigin": true
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
