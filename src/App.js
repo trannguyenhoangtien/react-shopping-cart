@@ -7,6 +7,9 @@ import store from "./store";
 import {Provider} from "react-redux";
 
 class App extends React.Component {
+  componentDidMount(){
+    document.title = "React Shopping Cart"
+  }
   render(){
     return (
       <Provider store={store}>
